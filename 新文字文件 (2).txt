@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界盃賽事中心</title>
+    <style>
+        :root { --main-blue: #002f6c; --gold: #d4af37; }
+        body { font-family: sans-serif; background: #f0f2f5; margin: 0; }
+        nav { background: var(--main-blue); color: white; padding: 1rem; text-align: center; }
+        .tab-container { display: flex; justify-content: center; background: white; border-bottom: 2px solid #ddd; }
+        .tab { padding: 15px 25px; cursor: pointer; font-weight: bold; }
+        .tab.active { color: var(--main-blue); border-bottom: 3px solid var(--main-blue); }
+        
+        .content-section { max-width: 900px; margin: 20px auto; display: none; padding: 20px; }
+        .content-section.active { display: block; }
+        
+        .match-card { background: white; border-radius: 10px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); display: flex; justify-content: space-between; align-items: center; }
+        .team { font-weight: bold; width: 40%; text-align: center; }
+        .vs { color: #888; }
+        .lineup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .lineup-list { background: #eee; padding: 10px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+
+<nav><h1>⚽ 世界盃即時賽事中心</h1></nav>
+
+<div class="tab-container">
+    <div class="tab active" onclick="showTab('schedule')">今日賽程</div>
+    <div class="tab" onclick="showTab('h2h')">對賽往績</div>
+    <div class="tab" onclick="showTab('lineup')">即時陣容</div>
+</div>
+
+<div id="schedule" class="content-section active">
+    <h3>2026/06/15 賽程</h3>
+    <div class="match-card">
+        <div class="team">阿根廷 🇦🇷</div>
+        <div class="vs">VS</div>
+        <div class="team">法國 🇫🇷</div>
+    </div>
+</div>
+
+<div id="h2h" class="content-section">
+    <h3>歷史交鋒紀錄 (H2H)</h3>
+    <p>阿根廷 vs 法國：近 5 場比賽 2 勝 2 平 1 負</p>
+    <ul>
+        <li>2022 世界盃：阿根廷 3 (4) - 3 (2) 法國</li>
+        <li>2018 世界盃：法國 4 - 3 阿根廷</li>
+    </ul>
+</div>
+
+<div id="lineup" class="content-section">
+    <h3>今日先發名單 (預計賽前60分鐘更新)</h3>
+    <div class="lineup-grid">
+        <div class="lineup-list">
+            <h4>阿根廷</h4>
+            <ul><li>Messi (C)</li><li>Alvarez</li><li>De Paul</li></ul>
+        </div>
+        <div class="lineup-list">
+            <h4>法國</h4>
+            <ul><li>Mbappe (C)</li><li>Griezmann</li><li>Dembele</li></ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showTab(tabId) {
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
